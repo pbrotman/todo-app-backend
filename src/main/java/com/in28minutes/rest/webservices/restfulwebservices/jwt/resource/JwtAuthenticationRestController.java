@@ -1,4 +1,6 @@
-package com.in28minutes.rest.jwt.resource;
+package com.in28minutes.rest.webservices.restfulwebservices.jwt.resource;
+
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.in28minutes.rest.jwt.JwtTokenUtil;
-import com.in28minutes.rest.jwt.JwtUserDetails;
+import com.in28minutes.rest.webservices.restfulwebservices.jwt.JwtTokenUtil;
+import com.in28minutes.rest.webservices.restfulwebservices.jwt.JwtUserDetails;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
