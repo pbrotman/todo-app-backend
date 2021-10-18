@@ -23,35 +23,25 @@ import com.in28minutes.rest.webservices.restfulwebservices.todo.Todo;
 public class TodoJpaResource {
 	
 	@Autowired
-	private TodoHardcodedService todoService;
-	
-	@Autowired
 	private TodoJpaRepository todoJpaRepository;
 
 	@GetMapping("/jpa/users/{username}/todos")
 	public List<Todo> getAllTodos(@PathVariable String username){
 		return todoJpaRepository.findByUsername(username);
-//		return todoService.findall();
 	}
 	
 	@GetMapping("/jpa/users/{username}/todos/{id}")
 	public Todo getTodo(@PathVariable String username, @PathVariable long id){
 		return todoJpaRepository.findById(id).get();
-//		return todoService.findById(id);
 	}
+	// return response entity
 	
 	// DELETE /users/{username}/todos/{id}
 	@DeleteMapping("/jpa/users/{username}/todos/{id}")
 	public ResponseEntity<Void> deleteTodo(
 			@PathVariable String username, @PathVariable long id){
 		
-//		Todo todo = todoService.deleteById(id);
 		todoJpaRepository.deleteById(id);
-		
-//		if(todo!=null) {
-//			return ResponseEntity.noContent().build();
-//		}
-//		return ResponseEntity.notFound().build();
 		
 		return ResponseEntity.noContent().build();
 	}
@@ -62,7 +52,6 @@ public class TodoJpaResource {
 			@PathVariable String username,
 			@PathVariable long id, @RequestBody Todo todo){
 		
-//		Todo todoUpdated = todoService.save(todo);
 		Todo todoUpdated = todoJpaRepository.save(todo);
 		
 		return new ResponseEntity<Todo>(todoUpdated, HttpStatus.OK);
@@ -75,7 +64,6 @@ public class TodoJpaResource {
 			@RequestBody Todo todo){
 		
 		todo.setId(-1L);
-//		Todo createdTodo = todoService.save(todo);
 		todo.setUsername(username);
 		Todo createdTodo = todoJpaRepository.save(todo);
 		
